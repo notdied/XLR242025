@@ -1,0 +1,284 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Robot Animation Styles */
+.robot-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.robot {
+  animation: robot-bounce 2s ease-in-out infinite;
+}
+
+.robot-head {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  border-radius: 20px;
+  position: relative;
+  margin: 0 auto 10px;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+}
+
+.robot-eyes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 30px;
+  margin-top: 15px;
+}
+
+.robot-eye {
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: robot-blink 3s infinite;
+  position: relative;
+}
+
+.robot-eye::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #1f2937;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  animation: robot-look 4s infinite;
+}
+
+.robot-smile {
+  width: 30px;
+  height: 15px;
+  border: 3px solid #ffffff;
+  border-top: none;
+  border-radius: 0 0 30px 30px;
+  margin: 10px auto;
+  animation: robot-smile-animate 2s ease-in-out infinite alternate;
+}
+
+.robot-body {
+  width: 60px;
+  height: 40px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 10px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+}
+
+.robot-arm {
+  width: 8px;
+  height: 25px;
+  background: linear-gradient(135deg, #6366f1, #4338ca);
+  border-radius: 4px;
+  position: absolute;
+  top: 5px;
+  animation: robot-wave 1.5s ease-in-out infinite alternate;
+}
+
+.left-arm {
+  left: -12px;
+  transform-origin: top center;
+}
+
+.right-arm {
+  right: -12px;
+  transform-origin: top center;
+  animation-delay: 0.3s;
+}
+
+@keyframes robot-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes robot-blink {
+  0%, 90%, 100% {
+    height: 12px;
+  }
+  95% {
+    height: 2px;
+  }
+}
+
+@keyframes robot-look {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+}
+
+@keyframes robot-smile-animate {
+  0% {
+    width: 30px;
+  }
+  100% {
+    width: 35px;
+  }
+}
+
+@keyframes robot-wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
+}
+
+/* Additional hover effects */
+.robot:hover {
+  animation-duration: 0.5s;
+}
+
+.robot:hover .robot-smile {
+  animation-duration: 0.5s;
+}
+
+.robot:hover .robot-arm {
+  animation-duration: 0.3s;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .robot-head {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .robot-body {
+    width: 45px;
+    height: 30px;
+  }
+  
+  .robot-arm {
+    width: 6px;
+    height: 20px;
+  }
+}
+
+/* Custom scrollbar for tables */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Form focus animations */
+input:focus, select:focus {
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* Button hover effects */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Card hover effects */
+.cursor-pointer:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading animation utility */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Success/Error message animations */
+.bg-green-100, .bg-red-100 {
+  animation: fade-in 0.3s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Table row hover effect */
+tbody tr:hover {
+  background-color: #f8fafc;
+  transition: background-color 0.2s ease;
+}
+
+/* Badge animations */
+.px-2.py-1.rounded-full {
+  transition: all 0.2s ease;
+}
+
+.px-2.py-1.rounded-full:hover {
+  transform: scale(1.05);
+}
